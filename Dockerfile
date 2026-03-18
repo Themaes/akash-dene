@@ -7,14 +7,12 @@ RUN apt-get update && apt-get install -y \
     libcurl4 \
     && rm -rf /var/lib/apt/lists/*
 
-# Set SRBMiner version to the latest (3.2.2 as of March 2026)
-ENV SRB_VERSION=3.2.2
 WORKDIR /miner
 
-# Download and extract SRBMiner (Updated link format)
-RUN wget https://github.com/doktor83/SRBMiner-Multi/releases/download/${SRB_VERSION}/SRBMiner-Multi-$(echo $SRB_VERSION | tr . -)-Linux.tar.xz \
-    && tar -xvf SRBMiner-Multi-$(echo $SRB_VERSION | tr . -)-Linux.tar.xz --strip-components=1 \
-    && rm SRBMiner-Multi-$(echo $SRB_VERSION | tr . -)-Linux.tar.xz
+# Use the exact link you provided
+RUN wget https://github.com/doktor83/SRBMiner-Multi/releases/download/3.2.2/SRBMiner-Multi-3-2-2-Linux.tar.gz \
+    && tar -xzvf SRBMiner-Multi-3-2-2-Linux.tar.gz --strip-components=1 \
+    && rm SRBMiner-Multi-3-2-2-Linux.tar.gz
 
 RUN chmod +x SRBMiner-MULTI
 
